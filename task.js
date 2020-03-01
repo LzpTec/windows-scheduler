@@ -54,7 +54,7 @@ module.exports = {
 				return reject('Task: Create error - Taskname already exists')
 			})
 			.catch( () => {
-				let command = ` /Create /RU SYSTEM /TN "${taskname}" /TR "\\\"${taskrun}\\\""`
+				let command = ` /Create /RU SYSTEM /TN "${taskname}" /TR "${taskrun}"`
 
 				if (schedule.frequency) command = command.concat(` /SC ${schedule.frequency}`)
 				if (schedule.modifier)  command = command.concat(` /MO ${schedule.modifier}`)
