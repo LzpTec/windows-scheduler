@@ -66,7 +66,10 @@ module.exports = {
 				if (schedule.every)     command = command.concat(` /RI ${schedule.every}`) 
 				if (schedule.startdate) command = command.concat(` /SD ${schedule.startdate}`)
 				if (schedule.enddate)   command = command.concat(` /ED ${schedule.enddate}`)
-				if (schedule.username) command = command.concat(` /RU \"${schedule.username}\"`) else command.concat(` /RU SYSTEM`)
+				if (schedule.username) 
+					command = command.concat(` /RU \"${schedule.username}\"`);
+				else 
+					command = command.concat(` /RU SYSTEM`);
 
 				try {
 					const result = exec(command)
