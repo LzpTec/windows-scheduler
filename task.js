@@ -1,11 +1,11 @@
 'use strict'
 
-const {execFileSync} = require('child_process')
+const {execSync} = require('child_process')
 const validate = require('./lib/validate')
 
 function exec(command) {
 	console.log("running", command);
-	return execFileSync('cmd', [`/C schtasks ${command}`], {windowsVerbatimArguments: true})
+	return execSync(`cmd /C schtasks ${command}`);
 }
 
 module.exports = {
