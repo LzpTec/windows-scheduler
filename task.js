@@ -4,6 +4,7 @@ const {execFileSync} = require('child_process')
 const validate = require('./lib/validate')
 
 function exec(command) {
+	console.log("running", command);
 	return execFileSync('cmd', [`/C schtasks ${command}`])
 }
 
