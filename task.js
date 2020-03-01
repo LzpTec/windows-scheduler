@@ -22,7 +22,7 @@ module.exports = {
 
 			let command = ` /Query`
 
-			if (taskname) command = command.concat(` /TN ${taskname}`)
+			if (taskname) command = command.concat(` /TN "${taskname}"`)
 			if (format)   command = command.concat(` /FO ${format}`)
 			if (verbose)  command = command.concat(` /V`)
 
@@ -53,7 +53,7 @@ module.exports = {
 				return reject('Task: Create error - Taskname already exists')
 			})
 			.catch( () => {
-				let command = ` /Create /RU SYSTEM /TN ${taskname} /TR "${taskrun}"`
+				let command = ` /Create /RU SYSTEM /TN "${taskname}" /TR "\"${taskrun}\""`
 
 				if (schedule.frequency) command = command.concat(` /SC ${schedule.frequency}`)
 				if (schedule.modifier)  command = command.concat(` /MO ${schedule.modifier}`)
@@ -90,7 +90,7 @@ module.exports = {
 			this.get(taskname)
 			.then( () => {
 
-				let command = ` /Change /RU SYSTEM /TN ${taskname}`
+				let command = ` /Change /RU SYSTEM /TN "${taskname}"`
 
 				if (taskrun) command = command.concat(` /TR ${taskrun}`)
 				if (schedule) {
@@ -131,7 +131,7 @@ module.exports = {
 			.then( () => {
 
 				try {
-					const result = exec(` /Delete /TN ${taskname} /F`)
+					const result = exec(` /Delete /TN "${taskname}" /F`)
 					resolve(result.toString())
 
 				} catch (err) {
@@ -158,7 +158,7 @@ module.exports = {
 			.then( () => {
 
 				try {
-					const result = exec(` /Run /TN ${taskname}`)
+					const result = exec(` /Run /TN "${taskname}"`)
 					resolve(result.toString())
 
 				} catch (err) {
@@ -184,7 +184,7 @@ module.exports = {
 			.then( () => {
 
 				try {
-					const result = exec(` /End /TN ${taskname}`)
+					const result = exec(` /End /TN "${taskname}"`)
 					resolve(result.toString())
 
 				} catch (err) {
