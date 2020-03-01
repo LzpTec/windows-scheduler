@@ -5,6 +5,7 @@ const validate = require('./lib/validate')
 
 function exec(command) {
 	console.log("running", command);
+	console.log("echo", execSync(`echo "/C schtasks ${command}"`).toString())
 	return execSync(`cmd /C schtasks ${command}`);
 }
 
